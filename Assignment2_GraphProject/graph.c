@@ -28,3 +28,42 @@ void addLocation(Graph* g, int index, char name[]) {
         g->numLocations = index + 1;
     }
 }
+
+void addRoad(Graph* g, int from, int to, int time) {
+    Edge* newEdge;
+    Edge* reverseEdge;
+
+    if (from < 0 || to < 0 || from >= g->numLocations || to >= g->numLocations) {
+        printf("Invalid road.\n");
+        return;
+    }
+
+    if (time <= 0) {
+        printf("Travel time must be positive.\n");
+        return;
+    }
+
+    newEdge = malloc(sizeof(Edge));
+
+    if (newEdge == NULL) {
+        printf("Memory allocation failed.\n");
+        return;
+    }
+
+    newEdge->to = to;
+    newEdge->time = time;
+    newEdge->next = g->list[from];
+    g->list[from] = newEdge;
+
+    reverseEdge = malloc(sizeof(Edge));
+
+    if (reverseEdge == NULL) {
+        printf("Memory allocation failed.\n");
+        return;
+    }
+
+    reverseEdge->to = from;
+    reverseEdge->time = time;
+    reverseEdge->next = g->list[to];
+    g->list[to] = reverseEdge;
+}
