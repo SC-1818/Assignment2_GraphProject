@@ -67,3 +67,71 @@ void addRoad(Graph* g, int from, int to, int time) {
     reverseEdge->next = g->list[to];
     g->list[to] = reverseEdge;
 }
+
+void printGraph(Graph* g) {
+    int i;
+    Edge* current;
+
+    printf("Road Network:\n\n");
+
+    for (i = 0; i < g->numLocations; i++) {
+        printf("%s -> ", g->names[i]);
+
+        current = g->list[i];
+
+        while (current != NULL) {
+            printf("%s (%d min)", g->names[current->to], current->time);
+
+            if (current->next != NULL) {
+                printf(", ");
+            }
+
+            current = current->next;
+        }
+
+        printf("\n");
+    }
+}
+
+void freeGraph(Graph* g) {
+    int i;
+    Edge* current;
+    Edge* temp;
+
+    for (i = 0; i < g->numLocations; i++) {
+        current = g->list[i];
+
+        while (current != NULL) {
+            temp = current;
+            current = current->next;
+            free(temp);
+        }
+
+        g->list[i] = NULL;
+    }
+}
+
+void testGraph() {
+    Graph g;
+
+    initGraph(&g);
+
+    addLocation(&g, 0, "Accident Location");
+    addLocation(&g, 1, "Main Street");
+    addLocation(&g, 2, "City Centre");
+    addLocation(&g, 3, "Bridge Road");
+    addLocation(&g, 4, "Hospital");
+    addLocation(&g, 5, "Suburb Road");
+
+    addRoad(&g, 0, 1, 4);
+    addRoad(&g, 0, 5, 8);
+    addRoad(&g, 1, 2, 6);
+    addRoad(&g, 1, 3, 7);
+    addRoad(&g, 2, 4, 5);
+    addRoad(&g, 3, 4, 6);
+    addRoad(&g, 5, 3, 5);
+
+    printGraph(&g);
+
+    freeGraph(&g);
+}
