@@ -6,5 +6,6 @@
 #define INF 999999
 
 void dijkstra(Graph* g, int start, int end);
+void testDijkstra();
 
 #endif
