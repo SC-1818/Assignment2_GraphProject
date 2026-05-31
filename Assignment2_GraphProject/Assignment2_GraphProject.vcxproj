@@ -23,11 +23,13 @@
     <ClCompile Include="emergency.c" />
     <ClCompile Include="graph.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="tests.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dijkstra.h" />
     <ClInclude Include="emergency.h" />
     <ClInclude Include="graph.h" />
+    <ClInclude Include="tests.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
