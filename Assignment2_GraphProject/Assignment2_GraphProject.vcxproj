@@ -20,11 +20,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dijkstra.c" />
+    <ClCompile Include="emergency.c" />
     <ClCompile Include="graph.c" />
     <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dijkstra.h" />
+    <ClInclude Include="emergency.h" />
     <ClInclude Include="graph.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

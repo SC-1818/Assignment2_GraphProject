@@ -24,12 +24,18 @@
     <ClCompile Include="dijkstra.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="emergency.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="graph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="dijkstra.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="emergency.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
