@@ -83,3 +83,14 @@ void runBlockedScenario() {
 
     freeGraph(&g);
 }
+
+void runEmergencyComparison() {
+    printf("\nEmergency Route Investigation\n");
+    printf("-----------------------------\n");
+    printf("Start location: Accident Location\n");
+    printf("Destination: Hospital\n");
+
+    runNormalScenario();
+    runCongestedScenario();
+    runBlockedScenario();
+}

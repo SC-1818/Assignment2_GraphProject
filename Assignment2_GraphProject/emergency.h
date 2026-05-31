@@ -8,5 +8,6 @@ void addBasicLocations(Graph* g);
 void runNormalScenario();
 void runCongestedScenario();
 void runBlockedScenario();
+void runEmergencyComparison();
 
 #endif

@@ -111,3 +111,43 @@ void testDijkstra() {
 
     freeGraph(&g);
 }
+
+int getShortestDistance(Graph* g, int start, int end) {
+    int distance[MAX_LOCATIONS];
+    int visited[MAX_LOCATIONS];
+    int i;
+    int count;
+    int currentIndex;
+    int newDistance;
+    Edge* currentEdge;
+
+    for (i = 0; i < g->numLocations; i++) {
+        distance[i] = INF;
+        visited[i] = 0;
+    }
+
+    distance[start] = 0;
+
+    for (count = 0; count < g->numLocations - 1; count++) {
+        currentIndex = findSmallestDistance(distance, visited, g->numLocations);
+
+        if (currentIndex == -1) {
+            break;
+        }
+
+        visited[currentIndex] = 1;
+        currentEdge = g->list[currentIndex];
+
+        while (currentEdge != NULL) {
+            newDistance = distance[currentIndex] + currentEdge->time;
+
+            if (visited[currentEdge->to] == 0 && newDistance < distance[currentEdge->to]) {
+                distance[currentEdge->to] = newDistance;
+            }
+
+            currentEdge = currentEdge->next;
+        }
+    }
+
+    return distance[end];
+}
