@@ -57,3 +57,29 @@ void runCongestedScenario() {
 
     freeGraph(&g);
 }
+
+void runBlockedScenario() {
+    Graph g;
+
+    initGraph(&g);
+    addBasicLocations(&g);
+
+    addRoad(&g, 0, 1, 4);
+    addRoad(&g, 0, 5, 8);
+
+    /*
+       The roads from Main Street to City Centre and Main Street to Bridge Road
+       are not added here because they are treated as blocked roads.
+    */
+
+    addRoad(&g, 2, 4, 5);
+    addRoad(&g, 3, 4, 6);
+    addRoad(&g, 5, 3, 5);
+
+    printf("\nScenario 3: Blocked Road Network\n");
+    printf("Some roads from Main Street are blocked, so another route is needed.\n\n");
+
+    dijkstra(&g, 0, 4);
+
+    freeGraph(&g);
+}
