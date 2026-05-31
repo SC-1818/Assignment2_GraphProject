@@ -6,5 +6,6 @@
 
 void addBasicLocations(Graph* g);
 void runNormalScenario();
+void runCongestedScenario();
 
 #endif

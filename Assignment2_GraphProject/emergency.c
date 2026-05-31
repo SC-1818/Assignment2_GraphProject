@@ -32,3 +32,28 @@ void runNormalScenario() {
 
     freeGraph(&g);
 }
+
+void runCongestedScenario() {
+    Graph g;
+
+    initGraph(&g);
+    addBasicLocations(&g);
+
+    addRoad(&g, 0, 1, 4);
+    addRoad(&g, 0, 5, 8);
+
+    /* This road is congested, so the travel time is higher than normal. */
+    addRoad(&g, 1, 2, 15);
+
+    addRoad(&g, 1, 3, 7);
+    addRoad(&g, 2, 4, 5);
+    addRoad(&g, 3, 4, 6);
+    addRoad(&g, 5, 3, 5);
+
+    printf("\nScenario 2: Congested Road Network\n");
+    printf("The road from Main Street to City Centre has higher travel time.\n\n");
+
+    dijkstra(&g, 0, 4);
+
+    freeGraph(&g);
+}
