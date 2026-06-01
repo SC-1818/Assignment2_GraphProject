@@ -12,6 +12,7 @@ int main() {
     testDijkstra();
     runEmergencyComparison();
     runAllTests();
+    runPerformanceComparison();
 
     return 0;
 }

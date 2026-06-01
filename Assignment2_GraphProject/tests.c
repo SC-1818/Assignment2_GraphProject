@@ -2,6 +2,7 @@
 #include "tests.h"
 #include "graph.h"
 #include "dijkstra.h"
+#include <time.h>
 
 void addTestLocations(Graph* g) {
     addLocation(g, 0, "Accident Location");
@@ -127,4 +128,36 @@ void runAllTests() {
     testGraphStructure();
     testDijkstraDistance();
     testEmergencyScenarios();
+}
+
+void runPerformanceComparison() {
+    Graph g;
+    clock_t startTime;
+    clock_t endTime;
+    double timeTaken;
+    int i;
+    int result;
+
+    printf("\nPerformance Test\n");
+    printf("----------------\n");
+
+    initGraph(&g);
+    addTestLocations(&g);
+    addNormalRoads(&g);
+
+    startTime = clock();
+
+    for (i = 0; i < 10000; i++) {
+        result = getShortestDistance(&g, 0, 4);
+    }
+
+    endTime = clock();
+
+    timeTaken = (double)(endTime - startTime) / CLOCKS_PER_SEC;
+
+    printf("Shortest distance result: %d minutes\n", result);
+    printf("Dijkstra repeated 10000 times.\n");
+    printf("Total time taken: %.5f seconds\n", timeTaken);
+
+    freeGraph(&g);
 }

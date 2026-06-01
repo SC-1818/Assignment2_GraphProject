@@ -3,5 +3,6 @@
 #define TESTS_H
 
 void runAllTests();
+void runPerformanceComparison();
 
 #endif
